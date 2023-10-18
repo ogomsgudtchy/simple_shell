@@ -1,18 +1,6 @@
 #include "shell.h"
 
 /**
- * File name: simpshell-strings3.c
- * Handles more string for Shell Program, part of Simple Shell Team Project on ALX 
- * OG and CambridgeMM
- */
-
-// Functions Declarations
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
-
-/**
  * _strchr - Function to locate a character in a string.
  * @s: String to be searched.
  * @c: Character to be located.

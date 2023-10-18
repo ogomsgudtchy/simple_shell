@@ -2,17 +2,8 @@
 
 /*
  * File name: simpshell-path.c
- * Shell Program that handles PATH, part of Simple Shell Team Project on ALX 
+ * Shell Program that handles PATH, part of Simple Shell Team Project on ALX
  * OG and CambridgeMM
- */
-
-Function Declarations
-char *get_location(char *command);
-char *fill_path_dir(char *path);
-list_t *get_path_dir(char *path);
-int execute_command(char **args, char **front, char **environ);
-
-/**
  * get_location - Function to locate command in the PATH.
  * @command: Command to locate.
  * Return: NULL - If Error occurs or Command cannot be located.
@@ -60,10 +51,10 @@ return result;
  * fill_path_dir - Function that copies PATH and equally replaces leading/sandwiched/trailing
  *		   colons (:) with the current working directory.
  * @path: Colon-separated list of directories.
+ *
  * Return: A copy of path with any leading/sandwiched/trailing colons replaced
  *	   with the current working directory.
  */
-
 char *fill_path_dir(char *path)
 {
 	int i, length = 0;
@@ -120,7 +111,6 @@ char *fill_path_dir(char *path)
  */
 
 list_t *get_path_dir(char *path)
-
 {
 	int index;
 	char **dirs, *path_copy;
@@ -179,8 +169,6 @@ int execute_command(char **args, char **front, char **environ);
 	if (child_pid == 0)
 	{
 		execve(command, args, environ);
-
-		If execve fails, free resources and exit with Errorcode
 		create_error(args, 126);
 		free_env();
 		free_args(args, front);
