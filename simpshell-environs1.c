@@ -1,19 +1,7 @@
 #include "shell.h"
 
 /**
- * File name: simpshell-environ1.c
- * Implements the environs for Shell Program, part of Simple Shell Team Project on ALX 
- * OG and CambridgeMM
- */
-
-// Functions Declarations
-char **_copyenv(void);
-void free_env(void);
-char **_getenv(const char *var);
-
-/**
  * _copyenv - Functions that create a copy of the environment.
- *
  * Return: NULL- If an error occurs, and otherwise - a double pointer to the new copy.
  */
 
@@ -76,8 +64,7 @@ char **_getenv(const char *var)
 	for (index = 0; environ[index]; index++)
 	{
 		if (_strncmp(var, environ[index], len) == 0)
-			return (&environ[index]);
+		return (&environ[index]);
 	}
-
 	return (NULL);
 }

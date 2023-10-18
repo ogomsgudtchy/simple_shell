@@ -4,14 +4,6 @@
  * File name: simpshell-getline.c
  * Implements Alias for Shell Program, part of Simple Shell Team Project on ALX 
  * OG and CambridgeMM
- */
-
-// Function Declarations
-int shellby_alias(char **args, char __attribute__((__unused__)) **front);
-void set_alias(char *var_name, char *value);
-void print_alias(alias_t *alias);
-
-/**
  * shellby_alias - Builtin command which prints all aliases, specific aliases, or sets an alias.
  * @args: Array of arguments.
  * @front: Double-pointer to beginning of args.
@@ -81,7 +73,7 @@ void set_alias(char *var_name, char *value)
 	for (j = 0, k = 0; value[j]; j++)
 	{
 		if (value[j] != '\'' && value[j] != '"')
-			new_value[k++] = value[j];
+		new_value[k++] = value[j];
 	}
 	new_value[k] = '\0';
 	while (temp)
@@ -95,7 +87,7 @@ void set_alias(char *var_name, char *value)
 		temp = temp->next;
 	}
 	if (!temp)
-		add_alias_end(&aliases, var_name, new_value);
+	add_alias_end(&aliases, var_name, new_value);
 }
 
 /**
@@ -157,6 +149,5 @@ char **replace_aliases(char **args)
 			temp = temp->next;
 		}
 	}
-
 	return (args);
 }

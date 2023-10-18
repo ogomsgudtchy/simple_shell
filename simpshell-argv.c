@@ -1,20 +1,10 @@
 #include "shell.h"
 
-/*
+/**
  * File name: simpshell-argv.c
  * Handles Arguments, part of Simple Shell Team Project on ALX
  * OG and CambridgeMM
- */
-
-Function Declarations
-char *get_args(char *line, int *exe_ret);
-int call_args(char **args, char **front, int *exe_ret);
-int run_args(char **args, char **front, int *exe_ret);
-int handle_args(int *exe_ret);
-int check_args(char **args);
-
-/**
- * get_args - Function to get a command from the standard input.
+  * get_args - Function to get a command from the standard input.
  * @line: Buffer to store the  command.
  * @exe_ret: The return value of the last executed command.
  *

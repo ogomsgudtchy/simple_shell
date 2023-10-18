@@ -1,18 +1,5 @@
 #include "shell.h"
 
-
-/**
- * File name: simpshell-strings2.c
- * Handles Lenght of Strings for Shell Program, part of Simple Shell Team Project on ALX 
- * OG and CambridgeMM
- */
-
-// Functions Declaration
-int _strlen(const char *s);
-char *_strcpy(char *dest, const char *src);
-char *_strcat(char *dest, const char *src);
-char *_strncat(char *dest, const char *src, size_t n);
-
 /**
  * _strlen - Func that returns Length of String.
  * @s: Pointer to Characters-string.

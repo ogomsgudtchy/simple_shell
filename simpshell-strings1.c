@@ -1,17 +1,6 @@
 #include "shell.h"
 
 /**
- * File name: simpshell-strings1.c
- * Tokenize a string for Shell Program, part of Simple Shell Team Project on ALX 
- * OG and CambridgeMM
- */
-
-// Functions Declarations
-int token_len(char *str, char *delim);
-int count_tokens(char *str, char *delim);
-char **_strtok(char *line, char *delim);
-
-/**
  * token_len - Function that locates the delimiter index marking the end
  *             of 1st token within a string.
  * @str: String to be searched.
