@@ -1,0 +1,31 @@
+TH "SIMPLE_SHELL" "ALX" "0x16. C - Simple Shell" "19" "October 2023"
+.SH NAME
+.B shellby\[fR] \- simple UNIX Command line interpreter
+.SH AUTHORS
+Ikechukwu Vincent, Cambridge MM
+.SH SYNOPSIS
+.B #include \shell.h\
+.sp
+.B int hsh(void)
+.SH DESCRIPTION
+.PP
+\f[B]simple_shell\f[R]  a Command language interpreter to execute
+commands interactively and non\-interactively.
+Reads the commands form the standard input.
+.SH INVOCATION
+.PP
+To use the simple_shell, compile \f[I].c files and output in a file hsh
+$ gcc \-Wall \-Werror \-Wextra \-pendatic \f[R].c \-0 hsh
+\f[B]simple_shell\f[R] can be run interactively by: $ ./hsh
+\f[B]simple_shell\f[R] can be run non\-interactively by: $ echo `ls' |
+\&./hsh
+.SH BUGS
+.PP
+Report bugs experienced.
+.SH EXIT
+.PP
+The exit command terminates the process(es) and closes Shell.
+.SH SEE ALSO
+.PP
+bash(1)
+
