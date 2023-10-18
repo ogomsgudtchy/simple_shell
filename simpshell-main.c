@@ -6,7 +6,7 @@
  * OG and CambridgeMM
  */
 
-Function Declarations
+// Function Declarations
 void sig_handler(int sig);
 int execute(char **args, char **front);
 int main(int argc, char *argv[]);
