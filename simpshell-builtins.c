@@ -137,7 +137,7 @@ int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 	else
 	{
 		if (_getenv("HOME") != NULL)
-			chdir(*(_getenv("HOME")) + 5);
+		chdir(*(_getenv("HOME")) + 5);
 	}
 
 	pwd = getcwd(pwd, 0);

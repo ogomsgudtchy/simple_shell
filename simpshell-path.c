@@ -6,8 +6,7 @@
  * OG and CambridgeMM
  */
 
-
-// Function Declarations
+Function Declarations
 char *get_location(char *command);
 char *fill_path_dir(char *path);
 list_t *get_path_dir(char *path);
@@ -16,7 +15,6 @@ int execute_command(char **args, char **front, char **environ);
 /**
  * get_location - Function to locate command in the PATH.
  * @command: Command to locate.
- *
  * Return: NULL - If Error occurs or Command cannot be located.
  *         Otherwise - the full Pathname of Command.
  */
@@ -62,10 +60,10 @@ return result;
  * fill_path_dir - Function that copies PATH and equally replaces leading/sandwiched/trailing
  *		   colons (:) with the current working directory.
  * @path: Colon-separated list of directories.
- *
  * Return: A copy of path with any leading/sandwiched/trailing colons replaced
  *	   with the current working directory.
  */
+
 char *fill_path_dir(char *path)
 {
 	int i, length = 0;
@@ -122,6 +120,7 @@ char *fill_path_dir(char *path)
  */
 
 list_t *get_path_dir(char *path)
+
 {
 	int index;
 	char **dirs, *path_copy;
@@ -158,6 +157,7 @@ list_t *get_path_dir(char *path)
  *
  * Return: The exit value of the executed command.
  */
+
 int execute_command(char **args, char **front, char **environ);
 {
 	char *command = args[0];
@@ -180,7 +180,7 @@ int execute_command(char **args, char **front, char **environ);
 	{
 		execve(command, args, environ);
 
-		// If execve fails, free resources and exit with Errorcode
+		If execve fails, free resources and exit with Errorcode
 		create_error(args, 126);
 		free_env();
 		free_args(args, front);

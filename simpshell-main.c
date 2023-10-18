@@ -6,7 +6,7 @@
  * OG and CambridgeMM
  */
 
-// Function Declarations
+Function Declarations
 void sig_handler(int sig);
 int execute(char **args, char **front);
 int main(int argc, char *argv[]);
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]);
 
 void sig_handler(int sig)
 {
-	// Define a new prompt for readability
+	Define a new prompt for readability
 	char *new_prompt = "\n$ ";
 
 	(void)sig;
@@ -40,14 +40,14 @@ int execute(char **args, char **front)
 	int status, flag = 0, exit_status = 0;
 	char *command = args[0];
 
-	 // If command is not an absolute or relative path, attempt to locate it
+	 If command is not an absolute or relative path, attempt to locate it
 	if (command[0] != '/' && command[0] != '.')
 	{
 		flag = 1;
 		command = get_location(command);
 	}
 
-	 // Check if the command exists and is accessible
+	 Check if the command exists and is accessible
 	if (!command || (access(command, F_OK) == -1))
 	{
 		if (errno == EACCES)

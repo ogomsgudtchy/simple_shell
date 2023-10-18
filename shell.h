@@ -107,7 +107,6 @@ int shellby_alias(char **args, char __attribute__((__unused__)) **front);
 int shellby_env(char **args, char __attribute__((__unused__)) **front);
 int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
 int shellby_help(char **args, char __attribute__((__unused__)) **front);
-
 /* Builtin Helpers */
 char **_getenv(const char *var);
 char **_copyenv(void);
