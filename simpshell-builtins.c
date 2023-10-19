@@ -4,8 +4,14 @@
  ** File name: simpshell-main.c
  * UNIX Command-line Interpreter, Simple Shell Team Project on ALX
  * OG and CambridgeMM
- * sig_handler - Function that handles signals, particularly SIGINT (Ctrl+C).
- * @sig: The Signal.
+ */
+
+int (*get_builtin(char *command))(char **args, char **front);
+int shellby_exit(char **args, char **front);
+int shellby_cd(char **args, char __attribute__((__unused__)) **front);
+int shellby_help(char **args, char __attribute__((__unused__)) **front);
+
+/**
  * get_builtin - Function that matches Command with a corresponding
  *               shellby built-in function.
  * @command: Command to match.
@@ -89,6 +95,7 @@ int shellby_exit(char **args, char **front)
  *              -1 - If an error occurs.
  *              Otherwise, 0.
  */
+
 int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 {
 	char **dir_info, *new_line = "\n";
@@ -130,7 +137,7 @@ int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 	else
 	{
 		if (_getenv("HOME") != NULL)
-		chdir(*(_getenv("HOME")) + 5);
+			chdir(*(_getenv("HOME")) + 5);
 	}
 
 	pwd = getcwd(pwd, 0);

@@ -1,13 +1,18 @@
 #include "shell.h"
 
-/*
+/**
  * File name: simpshell-main.c
- * UNIX Command-line Interpreter, Simple Shell Team Project on ALX
+ * UNIX Command-line Interpreter, Simple Shell Team Project on ALX.
  * OG and CambridgeMM
+ */
+
+void sig_handler(int sig);
+int execute(char **args, char **front);
+
+/**
  * sig_handler - Function that handles signals, particularly SIGINT (Ctrl+C).
  * @sig: The Signal.
  */
-
 void sig_handler(int sig)
 {
 	char *new_prompt = "\n$ ";
@@ -28,7 +33,7 @@ void sig_handler(int sig)
 int execute(char **args, char **front)
 {
 	pid_t child_pid;
-	int status, flag = 0, exit_status = 0;
+	int status, flag = 0, ret = 0;
 	char *command = args[0];
 
 	if (command[0] != '/' && command[0] != '.')
@@ -40,9 +45,9 @@ int execute(char **args, char **front)
 	if (!command || (access(command, F_OK) == -1))
 	{
 		if (errno == EACCES)
-			exit_status = (create_error(args, 126));
+			ret = (create_error(args, 126));
 		else
-			exit_status = (create_error(args, 127));
+			ret = (create_error(args, 127));
 	}
 	else
 	{
@@ -58,21 +63,21 @@ int execute(char **args, char **front)
 		{
 			execve(command, args, environ);
 			if (errno == EACCES)
-				exit_status = (create_error(args, 126));
+				ret = (create_error(args, 126));
 			free_env();
 			free_args(args, front);
 			free_alias_list(aliases);
-			_exit(exit_status);
+			_exit(ret);
 		}
 		else
 		{
 			wait(&status);
-			exit_status = WEXITSTATUS(status);
+			ret = WEXITSTATUS(status);
 		}
 	}
 	if (flag)
 		free(command);
-	return (exit_status);
+	return (ret);
 }
 
 /**
