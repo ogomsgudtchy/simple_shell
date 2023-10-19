@@ -1,9 +1,6 @@
 #include "shell.h"
 
 /**
- * File name: simpshell-argv.c
- * Handles Arguments, part of Simple Shell Team Project on ALX
- * OG and CambridgeMM
   * get_args - Function to get a command from the standard input.
  * @line: Buffer to store the  command.
  * @exe_ret: The return value of the last executed command.
@@ -14,29 +11,29 @@
 
 char *get_args(char *line, int *exe_ret)
 {
-	size_t n = 0;
-	ssize_t read;
-	char *prompt = "$ ";
+size_t n = 0;
+ssize_t read;
+char *prompt = "$ ";
 
-	if (line)
-		free(line);
+if (line)
+free(line);
 
-	read = _getline(&line, &n, STDIN_FILENO);
-	if (read == -1)
-		return (NULL);
-	if (read == 1)
-	{
-		hist++;
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, prompt, 2);
-		return (get_args(line, exe_ret));
-	}
+read = _getline(&line, &n, STDIN_FILENO);
+if (read == -1)
+return (NULL);
+if (read == 1)
+{
+hist++;
+if (isatty(STDIN_FILENO))
+write(STDOUT_FILENO, prompt, 2);
+return (get_args(line, exe_ret));
+}
 
-	line[read - 1] = '\0';
-	variable_replacement(&line, exe_ret);
-	handle_line(&line, read);
+line[read - 1] = '\0';
+variable_replacement(&line, exe_ret);
+handle_line(&line, read);
 
-	return (line);
+return (line);
 }
 
 /**
@@ -50,51 +47,50 @@ char *get_args(char *line, int *exe_ret)
 
 int call_args(char **args, char **front, int *exe_ret)
 {
-	int ret, index;
+int ret, index;
 
-	if (!args[0])
-		return (*exe_ret);
-	for (index = 0; args[index]; index++)
-	{
-		if (_strncmp(args[index], "||", 2) == 0)
-		{
-			free(args[index]);
-			args[index] = NULL;
-			args = replace_aliases(args);
-			ret = run_args(args, front, exe_ret);
-			if (*exe_ret != 0)
-			{
-				args = &args[++index];
-				index = 0;
-			}
-			else
-			{
-				for (index++; args[index]; index++)
-					free(args[index]);
-				return (ret);
-			}
-		}
-		else if (_strncmp(args[index], "&&", 2) == 0)
-		{
-			free(args[index]);
-			args[index] = NULL;
-			args = replace_aliases(args);
-			ret = run_args(args, front, exe_ret);
-			if (*exe_ret == 0)
-			{
-				args = &args[++index];
-				index = 0;
-			}
-			else
-			{
-				for (index++; args[index]; index++)
-					free(args[index]);
-				return (ret);
-			}
-		}
-	}
+if (!args[0])
+return (*exe_ret);
+for (index = 0; args[index]; index++)
+{
+if (_strncmp(args[index], "||", 2) == 0)
+{
+free(args[index]);
+args[index] = NULL;
 args = replace_aliases(args);
-
+ret = run_args(args, front, exe_ret);
+if (*exe_ret != 0)
+{
+args = &args[++index];
+index = 0;
+}
+else
+{
+for (index++; args[index]; index++)
+free(args[index]);
+return (ret);
+}
+}
+else if (_strncmp(args[index], "&&", 2) == 0)
+{
+free(args[index]);
+args[index] = NULL;
+args = replace_aliases(args);
+ret = run_args(args, front, exe_ret);
+if (*exe_ret == 0)
+{
+args = &args[++index];
+index = 0;
+}
+else
+{
+for (index++; args[index]; index++)
+free(args[index]);
+return (ret);
+}
+}
+}
+args = replace_aliases(args);
 ret = run_args(args, front, exe_ret);
 
 return (ret);
@@ -108,31 +104,32 @@ return (ret);
  *
  * Return: The return value of the last executed command.
  */
+
 int run_args(char **args, char **front, int *exe_ret)
 {
-	int ret, i;
-	int (*builtin)(char **args, char **front);
+int ret, i;
+int (*builtin)(char **args, char **front);
 
-	builtin = get_builtin(args[0]);
+builtin = get_builtin(args[0]);
 
-	if (builtin)
-	{
-		ret = builtin(args + 1, front);
-		if (ret != EXIT)
-			*exe_ret = ret;
-	}
-	else
-	{
-		*exe_ret = execute(args, front);
-		ret = *exe_ret;
-	}
+if (builtin)
+{
+ret = builtin(args + 1, front);
+if (ret != EXIT)
+*exe_ret = ret;
+}
+else
+{
+*exe_ret = execute(args, front);
+ret = *exe_ret;
+}
 
-	hist++;
+hist++;
 
-	for (i = 0; args[i]; i++)
-		free(args[i]);
+for (i = 0; args[i]; i++)
+free(args[i]);
 
-	return (ret);
+return (ret);
 }
 
 /**
@@ -143,43 +140,44 @@ int run_args(char **args, char **front, int *exe_ret)
  *         If the input cannot be tokenized - -1.
  *         Otherwise - Exit value of the last executed command.
  */
+
 int handle_args(int *exe_ret)
 {
-	int ret = 0, index;
-	char **args, *line = NULL, **front;
+int ret = 0, index;
+char **args, *line = NULL, **front;
 
-	line = get_args(line, exe_ret);
-	if (!line)
-		return (END_OF_FILE);
+line = get_args(line, exe_ret);
+if (!line)
+return (END_OF_FILE);
 
-	args = _strtok(line, " ");
-	free(line);
-	if (!args)
-		return (ret);
-	if (check_args(args) != 0)
-	{
-		*exe_ret = 2;
-		free_args(args, args);
-		return (*exe_ret);
-	}
-	front = args;
+args = _strtok(line, " ");
+free(line);
+if (!args)
+return (ret);
+if (check_args(args) != 0)
+{
+*exe_ret = 2;
+free_args(args, args);
+return (*exe_ret);
+}
+front = args;
 
-	for (index = 0; args[index]; index++)
-	{
-		if (_strncmp(args[index], ";", 1) == 0)
-		{
-			free(args[index]);
-			args[index] = NULL;
-			ret = call_args(args, front, exe_ret);
-			args = &args[++index];
-			index = 0;
-		}
-	}
-	if (args)
-		ret = call_args(args, front, exe_ret);
+for (index = 0; args[index]; index++)
+{
+if (_strncmp(args[index], ";", 1) == 0)
+{
+free(args[index]);
+args[index] = NULL;
+ret = call_args(args, front, exe_ret);
+args = &args[++index];
+index = 0;
+}
+}
+if (args)
+ret = call_args(args, front, exe_ret);
 
-	free(front);
-	return (ret);
+free(front);
+return (ret);
 }
 
 /**
@@ -187,24 +185,25 @@ int handle_args(int *exe_ret)
  * @args: Double-pointer to tokenized commands and arguments.
  *
  * Return: If a ';', '&&', or '||' is placed at an invalid position - 2.
- *	   Otherwise - 0.
+ *Otherwise - 0.
  */
+
 int check_args(char **args)
 {
-	size_t i;
-	char *cur, *nex;
+size_t i;
+char *cur, *nex;
 
-	for (i = 0; args[i]; i++)
-	{
-		cur = args[i];
-		if (cur[0] == ';' || cur[0] == '&' || cur[0] == '|')
-		{
-			if (i == 0 || cur[1] == ';')
-				return (create_error(&args[i], 2));
-			nex = args[i + 1];
-			if (nex && (nex[0] == ';' || nex[0] == '&' || nex[0] == '|'))
-				return (create_error(&args[i + 1], 2));
-		}
-	}
-	return (0);
+for (i = 0; args[i]; i++)
+{
+cur = args[i];
+if (cur[0] == ';' || cur[0] == '&' || cur[0] == '|')
+{
+if (i == 0 || cur[1] == ';')
+return (create_error(&args[i], 2));
+nex = args[i + 1];
+if (nex && (nex[0] == ';' || nex[0] == '&' || nex[0] == '|'))
+return (create_error(&args[i + 1], 2));
+}
+}
+return (0);
 }
