@@ -8,10 +8,10 @@
  */
 
 /* Functions Declaration */
-void free_args(char *args, char *front);
+void free_args(char **args, char **front);
 char *get_pid(void);
 char *get_env_value(char *beginning, int len);
-void variable_replacement(char *line, int *exe_ret)
+void variable_replacement(char **line, int *exe_ret);
 
 /**
  * free_args - Func to free up memory taken by args.

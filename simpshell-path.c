@@ -1,9 +1,16 @@
 #include "shell.h"
 
-/*
+/**
  * File name: simpshell-path.c
- * Shell Program that handles PATH, part of Simple Shell Team Project on ALX
+ * Shell Program that handles PATH.
+ * Simple Shell Team Project on ALX.
  * OG and CambridgeMM
+ */
+
+char *fill_path_dir(char *path);
+list_t *get_path_dir(char *path);
+
+/**
  * get_location - Function to locate command in the PATH.
  * @command: Command to locate.
  * Return: NULL - If Error occurs or Command cannot be located.
@@ -12,41 +19,40 @@
 
 char *get_location(char *command)
 {
-	char *path_var = *_getenv("PATH") + 5;
-	char *path_copy = fill_path_dir(path_var);
+	char **path, *temp;
+	list_t *dirs, *head;
+	struct stat st;
 
-	if (!path_copy)
+	path = _getenv("PATH");
+	if (!path || !(*path))
 		return (NULL);
 
-	char **dirs = _strtok(path_copy, ":");
+	dirs = get_path_dir(*path + 5);
+	head = dirs;
 
-	free(path_copy);
-
-	if (!dirs)
-		return (NULL);
-
-	char *result = NULL;
-
-	for (int i = 0; dirs[i] != NULL && result == NULL; i++)
+	while (dirs)
 	{
-		char *temp = malloc(_strlen(dirs[i]) + _strlen(command) + 2);
-
+		temp = malloc(_strlen(dirs->dir) + _strlen(command) + 2);
 		if (!temp)
-		{
-			free(dirs);
 			return (NULL);
-		}
-		_strcpy(temp, dirs[i]);
+
+		_strcpy(temp, dirs->dir);
 		_strcat(temp, "/");
 		_strcat(temp, command);
 
-		if (access(temp, F_OK) == 0)
-			result = temp;
-		else
-			free(temp);
+		if (stat(temp, &st) == 0)
+		{
+			free_list(head);
+			return (temp);
+		}
+
+		dirs = dirs->next;
+		free(temp);
 	}
-	free(dirs);
-	return (result);
+
+	free_list(head);
+
+	return (NULL);
 }
 
 /**
@@ -142,51 +148,3 @@ list_t *get_path_dir(char *path)
 
 	return (head);
 }
-
-/**
- * execute_command - Function which executes command in a child process.
- * @args: Array of arguments.
- * @front: Double-pointer to the beginning of args.
- * @environ: The environment variables.
- *
- * Return: The exit value of the executed command.
- */
-int execute_command(char **args, char **front, char **environ);
-{
-	char *command = args[0];
-
-	if (command == NULL || access(command, F_OK) == -1)
-	{
-		if (command)
-			create_error(args, 127);
-		return (127);
-	}
-	pid_t child_pid = fork();
-
-	if (child_pid == -1)
-	{
-		perror("Error child:");
-
-		return (1);
-	}
-	if (child_pid == 0)
-	{
-		execve(command, args, environ);
-
-		/* If execve fails, free resources and exit with Errorcode */
-		create_error(args, 126);
-		free_env();
-		free_args(args, front);
-		free_alias_list(aliases);
-		_exit(126);
-	}
-	else
-	{
-		int status;
-
-		wait(&status);
-
-		return (WEXITSTATUS(status));
-	}
-}
-

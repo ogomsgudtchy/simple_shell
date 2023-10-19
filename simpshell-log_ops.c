@@ -31,6 +31,14 @@ void handle_line(char **line, ssize_t read)
 	new_len = get_new_len(*line);
 	if (new_len == read - 1)
 		return;
+
+	new_line = (char *)malloc(new_len + 1);
+	if (new_line == NULL)
+	{
+		perror("Failed to allocate memory for new_line");
+		exit(EXIT_FAILURE);
+	}
+
 	j = 0;
 	old_line = *line;
 	for (i = 0; old_line[i]; i++)
