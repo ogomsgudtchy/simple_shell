@@ -5,9 +5,9 @@ void print_alias(alias_t *alias);
 
 /**
  * File name: simpshell-getline.c
- * Implements Alias for Shell Program, part of Simple Shell Team Project on ALX 
+ * Implements Alias for Shell Program, Simple Shell Team Project on ALX.
  * OG and CambridgeMM
- * shellby_alias - Builtin command which prints all aliases, specific aliases, or sets an alias.
+ * shellby_alias - Builtin command which prints aliases, or sets an alias.
  * @args: Array of arguments.
  * @front: Double-pointer to beginning of args.
  *
@@ -54,10 +54,10 @@ int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * set_alias - 	Function that will set existing alias 'name' with a new value, 'value'.
- * 		Or creates new alias with 'name' and 'value'.
+ * set_alias - Func to set existing alias 'name' with a new value, 'value'.
+ *		Or creates new alias with 'name' and 'value'.
  * @var_name: Name of alias.
- * @value: Value of the alias. 
+ * @value: Value of the alias.
  * First character is a '='.
  */
 
@@ -116,7 +116,8 @@ void print_alias(alias_t *alias)
 }
 
 /**
- * replace_aliases - Function to search arguments and replace any matching alias with their value.
+ * replace_aliases - Func to search args,
+ *		and replace any matching alias with their value.
  * @args: Double-pointer to arguments.
  *
  * Return: Double-pointer to arguments.
