@@ -1,17 +1,11 @@
 #include "shell.h"
 
-/**
- * File name: simpshell-main.c
- * UNIX Command-line Interpreter, Simple Shell Team Project on ALX.
- * OG and CambridgeMM
- */
-
 void sig_handler(int sig);
 int execute(char **args, char **front);
 
 /**
- * sig_handler - Function that handles signals, particularly SIGINT (Ctrl+C).
- * @sig: The Signal.
+ * sig_handler - Prints a new prompt upon a signal.
+ * @sig: The signal.
  */
 void sig_handler(int sig)
 {
@@ -23,13 +17,13 @@ void sig_handler(int sig)
 }
 
 /**
- * execute - Function to execute Command in a Child process.
- * @args: Array of arguments.
- * @front: Double-pointer to the beginning of args.
+ * execute - Executes a command in a child process.
+ * @args: An array of arguments.
+ * @front: A double pointer to the beginning of args.
  *
- * Return: Exit Status for executed command.
+ * Return: If an error occurs - a corresponding error code.
+ *         O/w - The exit value of the last executed command.
  */
-
 int execute(char **args, char **front)
 {
 	pid_t child_pid;
@@ -81,13 +75,12 @@ int execute(char **args, char **front)
 }
 
 /**
- * main - Function to run a simple UNIX command interpreter.
- * @argc: Number of arguments supplied to program.
- * @argv: Array of pointers to the arguments.
+ * main - Runs a simple UNIX command interpreter.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
  *
  * Return: The return value of the last executed command.
  */
-
 int main(int argc, char *argv[])
 {
 	int ret = 0, retn;

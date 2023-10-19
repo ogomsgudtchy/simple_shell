@@ -1,10 +1,6 @@
 #include "shell.h"
 
 /**
- * File name: simpshell-lists.c
- * Manages Linked Lists for Shell Program.
- * Simple Shell Team Project on ALX.
- * OG and CambridgeMM
  * add_alias_end - Function to add a node to the end of alias_t linked list.
  * @head: Pointer to head of the list_t list.
  * @name: Name of the new alias to be added.
