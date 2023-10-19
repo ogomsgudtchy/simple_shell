@@ -8,7 +8,8 @@
  * @line: Buffer to store the  command.
  * @exe_ret: The return value of the last executed command.
  *
- * Return: NULL (If an error occurs), Otherwise - a pointer to the stored command.
+ * Return: NULL (If an error occurs),
+ *		Otherwise - a pointer to the stored command.
  */
 
 char *get_args(char *line, int *exe_ret)
@@ -92,9 +93,11 @@ int call_args(char **args, char **front, int *exe_ret)
 			}
 		}
 	}
-	args = replace_aliases(args);
-	ret = run_args(args, front, exe_ret);
-	return (ret);
+args = replace_aliases(args);
+
+ret = run_args(args, front, exe_ret);
+
+return (ret);
 }
 
 /**
@@ -180,7 +183,7 @@ int handle_args(int *exe_ret)
 }
 
 /**
- * check_args - Function to check if there are any leading ';', ';;', '&&', or '||'.
+ * check_args - Function to check if there are any leading ';'';;' '&&''||'.
  * @args: Double-pointer to tokenized commands and arguments.
  *
  * Return: If a ';', '&&', or '||' is placed at an invalid position - 2.

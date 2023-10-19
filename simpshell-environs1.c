@@ -2,7 +2,7 @@
 
 /**
  * _copyenv - Functions that create a copy of the environment.
- * Return: NULL- If an error occurs, and otherwise - a double pointer to the new copy.
+ * Return: NULL - If err occurs, otherwise - double pointer to new copy.
  */
 
 char **_copyenv(void)
@@ -11,12 +11,13 @@ char **_copyenv(void)
 	size_t size;
 	int index;
 
-	for (size = 0; environ[size]; size++);
+	for (size = 0; environ[size]; size++)
+	{
+		new_environ = malloc(sizeof(char *) * (size + 1));
 
-	new_environ = malloc(sizeof(char *) * (size + 1));
-	if (!new_environ)
-		return (NULL);
-
+		if (!new_environ)
+			return (NULL);
+	}
 	for (index = 0; environ[index]; index++)
 	{
 		new_environ[index] = malloc(_strlen(environ[index]) + 1);

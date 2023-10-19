@@ -2,7 +2,8 @@
 
 /**
  * File name: simpshell-lists.c
- * Manages Linked Lists for Shell Program, part of Simple Shell Team Project on ALX 
+ * Manages Linked Lists for Shell Program.
+ * Simple Shell Team Project on ALX.
  * OG and CambridgeMM
  * add_alias_end - Function to add a node to the end of alias_t linked list.
  * @head: Pointer to head of the list_t list.
@@ -10,7 +11,8 @@
  *
  * @value: Value of the new alias to be added.
  *
- * Return: NULL - If an error occurs, and otherwise - a pointer to the new node.
+ * Return: NULL - If an error occurs.
+ *		Otherwise - a pointer to the new node.
  */
 
 alias_t *add_alias_end(alias_t **head, char *name, char *value)
@@ -49,7 +51,7 @@ alias_t *add_alias_end(alias_t **head, char *name, char *value)
  * @head: Pointer to the head of the list_t list.
  * @dir: Directory path for the new node to contain.
  *
- *  Return: NULL - If an error occurs, and otherwise - a pointer to the new node.
+ *  Return: NULL - If an error occurs, and otherwise - a pointer to new node.
  */
 
 list_t *add_node_end(list_t **head, char *dir)

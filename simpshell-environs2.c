@@ -2,7 +2,8 @@
 
 /**
  * File name: simpshell-environs2.c
- * Manages Environment for Shell Program, part of Simple Shell Team Project on ALX 
+ * Manages Environment for Shell Program.
+ * Simple Shell Team Project on ALX.
  * OG and CambridgeMM
  */
 

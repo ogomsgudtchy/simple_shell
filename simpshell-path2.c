@@ -1,15 +1,16 @@
 #include "shell.h"
 
-/*
+/**
  * File name: simpshell-path.c
  * Shell Program that handles PATH, part of Simple Shell Team Project on ALX
  * OG and CambridgeMM
  * get_location - Function to locate command in the PATH.
  * @command: Command to locate.
- * Return: NULL - If Error occurs or Command cannot be located.
+ * Return: NULL - If an error occurs or Command cannot be located.
  *         Otherwise - the full Pathname of Command.
  */
 
+char *fill_path_dir(char *path);
 char *get_location(char *command)
 {
 	char *path_var = *_getenv("PATH") + 5;
@@ -36,6 +37,7 @@ char *get_location(char *command)
 			free(dirs);
 			return (NULL);
 		}
+
 		_strcpy(temp, dirs[i]);
 		_strcat(temp, "/");
 		_strcat(temp, command);
@@ -50,21 +52,19 @@ char *get_location(char *command)
 }
 
 /**
- * fill_path_dir - Function that copies PATH,
- *		equally replaces leading/sandwiched/trailing
- *		colons (:) with the current working directory.
+ * fill_path_dir - Func to copies PAT, replace leading/sandwiched/trailing
+ *                  colons (:) with the current working directory.
  * @path: Colon-separated list of directories.
  *
  * Return: A copy of path with any leading/sandwiched/trailing colons replaced
- *	   with the current working directory.
+ *         with the current working directory.
  */
-
 char *fill_path_dir(char *path)
 {
 	int i, length = 0;
 	char *path_copy, *pwd;
 
-	pwd = *(_getenv("PWD")) + 4;
+	pwd = *_getenv("PWD") + 4;
 	for (i = 0; path[i]; i++)
 	{
 		if (path[i] == ':')
@@ -94,9 +94,9 @@ char *fill_path_dir(char *path)
 			{
 				_strcat(path_copy, ":");
 				_strcat(path_copy, pwd);
-			}
 			else
-				_strcat(path_copy, ":");
+				   _strcat(path_copy, ":");
+			}
 		}
 		else
 		{
@@ -173,7 +173,6 @@ int execute_command(char **args, char **front, char **environ);
 	{
 		execve(command, args, environ);
 
-		/* If execve fails, free resources and exit with Errorcode */
 		create_error(args, 126);
 		free_env();
 		free_args(args, front);
@@ -189,4 +188,3 @@ int execute_command(char **args, char **front, char **environ);
 		return (WEXITSTATUS(status));
 	}
 }
-

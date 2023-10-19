@@ -44,7 +44,7 @@ int (*get_builtin(char *command))(char **args, char **front)
  * Return: -3 - If there are no arguments.
  *	        2 -  If the given exit value is invalid.
  *              Otherwise, exits with the given status value.
- *  Description: Upon returning -3, the program exits back in the Main function.
+ *  Description: Upon returning -3, the program exits back in  Main function.
  */
 
 int shellby_exit(char **args, char **front)
@@ -81,7 +81,7 @@ int shellby_exit(char **args, char **front)
 }
 
 /**
- * shellby_cd - Function that changes the current directory of the Shellby process.
+ * shellby_cd - Function that changes current directory of Shellby process.
  * @args: Array of arguments.
  * @front: Double-pointer to the beginning of args.
  *
@@ -162,7 +162,7 @@ int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * shellby_help - Function that displays information about Shellby built-in commands.
+ * shellby_help - Function that displays info about Shellby built-in commands.
  * @args: Array of arguments.
  * @front: A pointer to beginning of args.
  *

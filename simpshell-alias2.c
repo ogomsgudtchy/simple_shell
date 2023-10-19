@@ -1,11 +1,13 @@
 #include "shell.h"
 
+void set_alias(char *var_name, char *value);
+void print_alias(alias_t *alias);
+
 /**
  * File name: simpshell-getline.c
- * Implements Alias for Shell Program
- * Simple Shell Team Project on ALX
+ * Implements Alias for Shell Program, part of Simple Shell Team Project on ALX 
  * OG and CambridgeMM
- * shellby_alias - Builtin cmd that prints or sets alias.
+ * shellby_alias - Builtin command which prints all aliases, specific aliases, or sets an alias.
  * @args: Array of arguments.
  * @front: Double-pointer to beginning of args.
  *
@@ -52,11 +54,11 @@ int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * set_alias -  Func to set existing alias 'name' with new value, 'value'.
- *		Or creates new alias with 'name' and 'value'.
+ * set_alias - 	Function that will set existing alias 'name' with a new value, 'value'.
+ * 		Or creates new alias with 'name' and 'value'.
  * @var_name: Name of alias.
- * @value: Value of the alias.
-  * First character is a '='.
+ * @value: Value of the alias. 
+ * First character is a '='.
  */
 
 void set_alias(char *var_name, char *value)
@@ -74,7 +76,7 @@ void set_alias(char *var_name, char *value)
 	for (j = 0, k = 0; value[j]; j++)
 	{
 		if (value[j] != '\'' && value[j] != '"')
-		new_value[k++] = value[j];
+			new_value[k++] = value[j];
 	}
 	new_value[k] = '\0';
 	while (temp)
@@ -88,7 +90,7 @@ void set_alias(char *var_name, char *value)
 		temp = temp->next;
 	}
 	if (!temp)
-	add_alias_end(&aliases, var_name, new_value);
+		add_alias_end(&aliases, var_name, new_value);
 }
 
 /**
@@ -114,7 +116,7 @@ void print_alias(alias_t *alias)
 }
 
 /**
- * replace_aliases - Func to search args, use value to replace matching alias.
+ * replace_aliases - Function to search arguments and replace any matching alias with their value.
  * @args: Double-pointer to arguments.
  *
  * Return: Double-pointer to arguments.
@@ -150,5 +152,6 @@ char **replace_aliases(char **args)
 			temp = temp->next;
 		}
 	}
+
 	return (args);
 }

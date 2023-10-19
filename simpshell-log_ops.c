@@ -2,23 +2,24 @@
 
 /**
  * File name: simpshell-log_ops.c
- * Handles Logical Ops for Shell Program, part of Simple Shell Team Project on ALX 
+ * Handles Logical Ops for Shell Program.
+ * Part of Simple Shell Team Project on ALX.
  * OG and CambridgeMM
  */
 
-// Functions Declarations
+/* Functions Declarations */
 
 void handle_line(char **line, ssize_t read);
 ssize_t get_new_len(char *line);
 void logical_ops(char *line, ssize_t *new_len);
 
 /**
- * handle_line - Function that partitions a line read from standard input as needed.
+ * handle_line - Func to  partition a line read from standard input as needed.
  * @line: Pointer to Line read from standard input.
  * @read: Line  Length.
  *
  * Description: Spaces are inserted to separate ";", "||", and "&&".
- *          	Replace "#" with '\0'.
+ *		Replace "#" with '\0'.
  */
 void handle_line(char **line, ssize_t read)
 {
@@ -101,7 +102,7 @@ void handle_line(char **line, ssize_t read)
 }
 
 /**
- * get_new_len - Func to get new length of line partitioned by ";", "||", "&&&", or "#".
+ * get_new_len - Func to get new line len partitioned by ";" "||" "&&&" "#".
  * @line: Line to check.
  *
  * Return: New line length.
