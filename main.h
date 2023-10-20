@@ -192,7 +192,7 @@ int exit_shell(data_shell *datash);
 
 /* stdlib.c */
 int get_len(int n);
-char _itoa(int n);
+char *aux_itoa(int n);
 int _atoi(char *s);
 
 /* error1.c */
