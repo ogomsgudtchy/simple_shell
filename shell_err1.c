@@ -20,7 +20,7 @@ char *error_env(data_shell *datash)
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
 	{
-		freei(error);
+		free(error);
 		free(ver_str);
 		return (NULL);
 	}
