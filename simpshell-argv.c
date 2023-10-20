@@ -1,17 +1,19 @@
 #include "shell.h"
 
+char *get_args(char *line, int *exe_ret);
+int call_args(char **args, char **front, int *exe_ret);
+int run_args(char **args, char **front, int *exe_ret);
+int handle_args(int *exe_ret);
+int check_args(char **args);
+
 /**
- * File name: simpshell-argv.c
- * Handles Arguments, part of Simple Shell Team Project on ALX
- * OG and CambridgeMM
-  * get_args - Function to get a command from the standard input.
- * @line: Buffer to store the  command.
+ * get_args - Gets a command from standard input.
+ * @line: A buffer to store the command.
  * @exe_ret: The return value of the last executed command.
  *
- * Return: NULL (If an error occurs),
- *		Otherwise - a pointer to the stored command.
+ * Return: If an error occurs - NULL.
+ *         Otherwise - a pointer to the stored command.
  */
-
 char *get_args(char *line, int *exe_ret)
 {
 	size_t n = 0;
@@ -40,14 +42,13 @@ char *get_args(char *line, int *exe_ret)
 }
 
 /**
- * call_args - Function to partition operators from commands and to call them.
- * @args: Array of arguments.
- * @front: Double-pointer to the beginning of args.
- * @exe_ret: Return value of last executed command of Parent Process.
+ * call_args - Partitions operators from commands and calls them.
+ * @args: An array of arguments.
+ * @front: A double pointer to the beginning of args.
+ * @exe_ret: The return value of the parent process' last executed command.
  *
  * Return: The return value of the last executed command.
  */
-
 int call_args(char **args, char **front, int *exe_ret)
 {
 	int ret, index;
@@ -93,18 +94,16 @@ int call_args(char **args, char **front, int *exe_ret)
 			}
 		}
 	}
-args = replace_aliases(args);
-
-ret = run_args(args, front, exe_ret);
-
-return (ret);
+	args = replace_aliases(args);
+	ret = run_args(args, front, exe_ret);
+	return (ret);
 }
 
 /**
- * run_args - Function to call the execution of Command.
- * @args: Array of arguments.
- * @front: Double-pointer to beginning of args.
- * @exe_ret: Return value of last executed command of Parent Process.
+ * run_args - Calls the execution of a command.
+ * @args: An array of arguments.
+ * @front: A double pointer to the beginning of args.
+ * @exe_ret: The return value of the parent process' last executed command.
  *
  * Return: The return value of the last executed command.
  */
@@ -136,12 +135,12 @@ int run_args(char **args, char **front, int *exe_ret)
 }
 
 /**
- * handle_args - Function to get, call, and run the execution of Command.
- * @exe_ret: Return value of last executed command of Parent process.
+ * handle_args - Gets, calls, and runs the execution of a command.
+ * @exe_ret: The return value of the parent process' last executed command.
  *
  * Return: If an end-of-file is read - END_OF_FILE (-2).
  *         If the input cannot be tokenized - -1.
- *         Otherwise - Exit value of the last executed command.
+ *         O/w - The exit value of the last executed command.
  */
 int handle_args(int *exe_ret)
 {
@@ -183,8 +182,8 @@ int handle_args(int *exe_ret)
 }
 
 /**
- * check_args - Function to check if there are any leading ';'';;' '&&''||'.
- * @args: Double-pointer to tokenized commands and arguments.
+ * check_args - Checks if there are any leading ';', ';;', '&&', or '||'.
+ * @args: 2D pointer to tokenized commands and arguments.
  *
  * Return: If a ';', '&&', or '||' is placed at an invalid position - 2.
  *	   Otherwise - 0.

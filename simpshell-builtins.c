@@ -1,24 +1,16 @@
 #include "shell.h"
-
-/**
- ** File name: simpshell-main.c
- * UNIX Command-line Interpreter, Simple Shell Team Project on ALX
- * OG and CambridgeMM
- */
-
 int (*get_builtin(char *command))(char **args, char **front);
 int shellby_exit(char **args, char **front);
 int shellby_cd(char **args, char __attribute__((__unused__)) **front);
 int shellby_help(char **args, char __attribute__((__unused__)) **front);
 
 /**
- * get_builtin - Function that matches Command with a corresponding
- *               shellby built-in function.
- * @command: Command to match.
+ * get_builtin - Matches a command with a corresponding
+ *               shellby builtin function.
+ * @command: The command to match.
  *
- * Return: Function pointer to the corresponding built-in.
+ * Return: A function pointer to the corresponding builtin.
  */
-
 int (*get_builtin(char *command))(char **args, char **front)
 {
 	builtin_t funcs[] = {
@@ -42,17 +34,17 @@ int (*get_builtin(char *command))(char **args, char **front)
 }
 
 /**
- * shellby_exit - Function that causes normal process termination
- *                for Shellby shell.
- * @args: Array of arguments containing the Exitvalue.
- * @front: Double-pointer to the beginning of args.
+ * shellby_exit - Causes normal process termination
+ *                for the shellby shell.
+ * @args: An array of arguments containing the exit value.
+ * @front: A double pointer to the beginning of args.
  *
- * Return: -3 - If there are no arguments.
- *	        2 -  If the given exit value is invalid.
- *              Otherwise, exits with the given status value.
- *  Description: Upon returning -3, the program exits back in  Main function.
+ * Return: If there are no arguments - -3.
+ *         If the given exit value is invalid - 2.
+ *         O/w - exits with the given status value.
+ *
+ * Description: Upon returning -3, the program exits back in the main function.
  */
-
 int shellby_exit(char **args, char **front)
 {
 	int i, len_of_int = 10;
@@ -87,15 +79,14 @@ int shellby_exit(char **args, char **front)
 }
 
 /**
- * shellby_cd - Function that changes current directory of Shellby process.
- * @args: Array of arguments.
- * @front: Double-pointer to the beginning of args.
+ * shellby_cd - Changes the current directory of the shellby process.
+ * @args: An array of arguments.
+ * @front: A double pointer to the beginning of args.
  *
- * Return:  2 - If the given string is not a Directory.
- *              -1 - If an error occurs.
- *              Otherwise, 0.
+ * Return: If the given string is not a directory - 2.
+ *         If an error occurs - -1.
+ *         Otherwise - 0.
  */
-
 int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 {
 	char **dir_info, *new_line = "\n";
@@ -169,13 +160,13 @@ int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * shellby_help - Function that displays info about Shellby built-in commands.
- * @args: Array of arguments.
- * @front: A pointer to beginning of args.
+ * shellby_help - Displays information about shellby builtin commands.
+ * @args: An array of arguments.
+ * @front: A pointer to the beginning of args.
  *
- * Return: -1 If an error occurs, and otherwise - 0.
+ * Return: If an error occurs - -1.
+ *         Otherwise - 0.
  */
-
 int shellby_help(char **args, char __attribute__((__unused__)) **front)
 {
 	if (!args[0])

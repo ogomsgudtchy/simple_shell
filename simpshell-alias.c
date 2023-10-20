@@ -4,9 +4,6 @@ void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
 /**
- * File name: simpshell-getline.c
- * Implements Alias for Shell Program, Simple Shell Team Project on ALX.
- * OG and CambridgeMM
  * shellby_alias - Builtin command which prints aliases, or sets an alias.
  * @args: Array of arguments.
  * @front: Double-pointer to beginning of args.
