@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * error_env - Func for env err msg in get_env.
+ * error_env - error message for env in get_env.
  * @datash: data relevant (counter, arguments)
  * Return: error message.
  */
-
 char *error_env(data_shell *datash)
 {
 	int length;
@@ -36,14 +35,12 @@ char *error_env(data_shell *datash)
 
 	return (error);
 }
-
 /**
- * error_path_126 - Func for path err msg and failure denied permission.
+ * error_path_126 - error message for path and failure denied permission.
  * @datash: data relevant (counter, arguments).
  *
- * Return: The error str.
+ * Return: The error string.
  */
-
 char *error_path_126(data_shell *datash)
 {
 	int length;

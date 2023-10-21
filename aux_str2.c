@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * _strdup - Func that duplicates a str i heap memory.
+ * _strdup - duplicates a str in the heap memory.
  * @s: Type char pointer str
  * Return: duplicated str
  */
-
 char *_strdup(const char *s)
 {
 	char *new;
@@ -20,11 +19,10 @@ char *_strdup(const char *s)
 }
 
 /**
- * _strlen - Func that returns lenght of str.
+ * _strlen - Returns the lenght of a string.
  * @s: Type char pointer
  * Return: Always 0.
  */
-
 int _strlen(const char *s)
 {
 	int len;
@@ -36,13 +34,12 @@ int _strlen(const char *s)
 }
 
 /**
- * cmp_chars - Func to compare chars of str.
+ * cmp_chars - compare chars of strings
  * @str: input string.
  * @delim: delimiter.
  *
  * Return: 1 if are equals, 0 if not.
  */
-
 int cmp_chars(char str[], const char *delim)
 {
 	unsigned int i, j, k;
@@ -64,13 +61,12 @@ int cmp_chars(char str[], const char *delim)
 }
 
 /**
- * _strtok - Func to splits a string by some delimiter.
- * @str: input str.
+ * _strtok - splits a string by some delimiter.
+ * @str: input string.
  * @delim: delimiter.
  *
  * Return: string splited.
  */
-
 char *_strtok(char str[], const char *delim)
 {
 	static char *splitted, *str_end;
@@ -115,12 +111,11 @@ char *_strtok(char str[], const char *delim)
 }
 
 /**
- * _isdigit - Func that defines if str passed is a number
+ * _isdigit - defines if string passed is a number
  *
- * @s: input str
- * Return: 1 if str is a number. 0 in other case.
+ * @s: input string
+ * Return: 1 if string is a number. 0 in other case.
  */
-
 int _isdigit(const char *s)
 {
 	unsigned int i;
