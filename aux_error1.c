@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strcat_cd - Func that concatenates the message for cd error
+ * strcat_cd - function that concatenates the message for cd error
  *
  * @datash: data relevant (directory)
  * @msg: message to print
@@ -9,7 +9,6 @@
  * @ver_str: counter lines
  * Return: error message
  */
-
 char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
 {
 	char *illegal_flag;
@@ -40,11 +39,10 @@ char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
 }
 
 /**
- * error_get_cd - Func for cd command err msg in get_cd.
+ * error_get_cd - error message for cd command in get_cd
  * @datash: data relevant (directory)
  * Return: Error message
  */
-
 char *error_get_cd(data_shell *datash)
 {
 	int length, len_id;
@@ -80,11 +78,10 @@ char *error_get_cd(data_shell *datash)
 }
 
 /**
- * error_not_found - Func for 'command not found' generic err msg.
+ * error_not_found - generic error message for command not found
  * @datash: data relevant (counter, arguments)
  * Return: Error message
  */
-
 char *error_not_found(data_shell *datash)
 {
 	int length;
@@ -113,12 +110,11 @@ char *error_not_found(data_shell *datash)
 }
 
 /**
- * error_exit_shell - Generic err msg func for exit in get_exit.
+ * error_exit_shell - generic error message for exit in get_exit
  * @datash: data relevant (counter, arguments)
  *
  * Return: Error message
  */
-
 char *error_exit_shell(data_shell *datash)
 {
 	int length;
