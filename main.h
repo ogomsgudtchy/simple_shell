@@ -1,6 +1,9 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+/* Filename: main.h */
+/* Header File for ALX Simple Shell.*/
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -16,20 +19,21 @@
 #define TOK_BUFSIZE 128
 #define TOK_DELIM " \t\r\n\a"
 
-/* Points to an array of pointers to strings called the "environment" */
+/* Points to an array of ptr to str called the "environment" */
 extern char **environ;
 
 
 /**
- * struct data - struct that contains all relevant data on runtime
+ * struct data - struct that contain all relevant data on runtime
  * @av: argument vector
  * @input: command line written by the user
- * @args: tokens of the command line
- * @status: last status of the shell
+ * @args: tokens of command line
+ * @status: last status of shell
  * @counter: lines counter
  * @_environ: environment variable
- * @pid: process ID of the shell
+ * @pid: process ID of shell
  */
+
 typedef struct data
 {
 	char **av;
@@ -47,6 +51,7 @@ typedef struct data
  * @next: next node
  * Description: single linked list to store separators
  */
+
 typedef struct sep_list_s
 {
 	char separator;
@@ -59,6 +64,7 @@ typedef struct sep_list_s
  * @next: next node
  * Description: single linked list to store command lines
  */
+
 typedef struct line_list_s
 {
 	char *line;
@@ -67,12 +73,13 @@ typedef struct line_list_s
 
 /**
  * struct r_var_list - single linked list
- * @len_var: length of the variable
- * @val: value of the variable
- * @len_val: length of the value
+ * @len_var: length of variable
+ * @val: value of variable
+ * @len_val: length of value
  * @next: next node
  * Description: single linked list to store variables
  */
+
 typedef struct r_var_list
 {
 	int len_var;
@@ -83,7 +90,7 @@ typedef struct r_var_list
 
 /**
  * struct builtin_s - Builtin struct for command args.
- * @name: The name of the command builtin i.e cd, exit, env
+ * @name: The name of command builtin i.e cd, exit, env
  * @f: data type pointer function.
  */
 typedef struct builtin_s
@@ -126,14 +133,15 @@ void rev_string(char *s);
 
 /* check_syntax_error.c */
 int repeated_char(char *input, int i);
-int error_sep_op(char *input, int i, char last);
 int first_char(char *input, int *i);
 void print_syntax_error(data_shell *datash, char *input, int i, int bool);
 int check_syntax_error(data_shell *datash, char *input);
+int error_sep_op(char *input, int i, char last);
+
 
 /* shell_loop.c */
-char *without_comment(char *in);
 void shell_loop(data_shell *datash);
+char *without_comment(char *in);
 
 /* read_line.c */
 char *read_line(int *i_eof);

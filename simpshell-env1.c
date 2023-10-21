@@ -1,13 +1,16 @@
 #include "main.h"
 
+/*Filename: simpshell-env1.c */
+
 /**
  * cmp_env_name - compares env variables names
  * with the name passed.
- * @nenv: name of the environment variable
+ * @nenv: name of the env var
  * @name: name passed
  *
  * Return: 0 if are not equal. Another value if they are.
  */
+
 int cmp_env_name(const char *nenv, const char *name)
 {
 	int i;
@@ -24,13 +27,15 @@ int cmp_env_name(const char *nenv, const char *name)
 }
 
 /**
- * _getenv - get an environment variable
+ * _getenv - get env var
+ *
  * @name: name of the environment variable
  * @_environ: environment variable
  *
  * Return: value of the environment variable if is found.
  * In other case, returns NULL.
  */
+
 char *_getenv(const char *name, char **_environ)
 {
 	char *ptr_env;
@@ -56,11 +61,12 @@ char *_getenv(const char *name, char **_environ)
 }
 
 /**
- * _env - prints the evironment variables
+ * _env - prints env var
  *
  * @datash: data relevant.
  * Return: 1 on success.
  */
+
 int _env(data_shell *datash)
 {
 	int i, j;
